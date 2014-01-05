@@ -2,30 +2,6 @@
 #encoding=utf8
 import os
 import sys
-from datetime import datetime
-
-DEBUG = 1
-INFO = 2
-WARN = 3
-ERROR = 4
-FATAL = 5
-fenc = 'utf8'
-
-
-def log(level, msg):
-    tm = str(datetime.now())
-    if level == DEBUG:
-        strout = '[%s] DEBUG:%s' % (tm, msg)
-    elif level == INFO:
-        strout = '[%s] INFO:%s' % (tm, msg)
-    elif level == WARN:
-        strout = '[%s] WARN:%s' % (tm, msg)
-    elif level == ERROR:
-        strout = '[%s] ERROR:%s' % (tm, msg)
-    elif level == FATAL:
-        strout = msg.encode(fenc)
-        raise RuntimeError(msg)
-    print >> sys.stderr, strout.encode(fenc)
 
 dic_userid = {}
 

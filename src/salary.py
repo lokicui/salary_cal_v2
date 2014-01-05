@@ -4,33 +4,10 @@ import os
 import sys
 import pdb
 sys.path.append('../src')
-from datetime import datetime
 from kaoqin_jixiao import KaoQin,JiXiao
+from log import log, DEBUG, INFO, WARN, ERROR, FATAL
 #工时, 小时
 g_work_hour = 168
-
-DEBUG = 1
-INFO = 2
-WARN = 3
-ERROR = 4
-FATAL = 5
-fenc = 'utf8'
-
-
-def log(level, msg):
-    tm = str(datetime.now())
-    if level == DEBUG:
-        strout = '[%s] DEBUG:%s' % (tm, msg)
-    elif level == INFO:
-        strout = '[%s] INFO:%s' % (tm, msg)
-    elif level == WARN:
-        strout = '[%s] WARN:%s' % (tm, msg)
-    elif level == ERROR:
-        strout = '[%s] ERROR:%s' % (tm, msg)
-    elif level == FATAL:
-        strout = msg.encode(fenc)
-        raise RuntimeError(msg)
-    print >> sys.stderr, strout.encode(fenc)
 
 class DataLoader(object):
     '''
@@ -42,12 +19,12 @@ class DataLoader(object):
         self.employee_dict = {}
     #init at load_header
     #key to index
-    def load_file(self, final_fname, kaoqin_fname, jixiao_fname):
-        self.load_kaoqin(kaoqin_fname)
-        self.load_jixiao(jixiao_fname)
-        self.load_final(final_fname)
+    def load_file(self, final_fname, kaoqin_fname, jixiao_fname, fenc='utf8'):
+        self.load_kaoqin(kaoqin_fname, fenc)
+        self.load_jixiao(jixiao_fname, fenc)
+        self.load_final(final_fname, fenc)
 
-    def load_kaoqin(self, kaoqin_fname):
+    def load_kaoqin(self, kaoqin_fname, fenc='utf8'):
         lineno = 0
         for line in open(kaoqin_fname):
             lineno += 1
@@ -61,7 +38,7 @@ class DataLoader(object):
             self.employee_dict[kaoqin.key()].kaoqin_rawline = line.strip()
             self.employee_dict[kaoqin.key()].kaoqin_lineno = lineno
 
-    def load_jixiao(self, jixiao_fname):
+    def load_jixiao(self, jixiao_fname, fenc='utf8'):
         lineno = 0
         for line in open(jixiao_fname):
             lineno += 1
@@ -75,7 +52,7 @@ class DataLoader(object):
             self.employee_dict[jixiao.key()].jixiao_rawline = line.strip()
             self.employee_dict[jixiao.key()].jixiao_lineno = lineno
 
-    def load_final(self, final_fname):
+    def load_final(self, final_fname, fenc='utf8'):
         lineno = 0
         for line in open(final_fname):
             lineno += 1
@@ -95,11 +72,9 @@ class DataLoader(object):
             self.header_k2i[items[i]] = i
             self.header_i2k[i] = items[i]
 
-    def check(self):
+    def check(self, debug=False):
         for k,v in self.employee_dict.items():
-            #if k == 'LR0015':
-            #    pdb.set_trace()
-            v.check()
+            v.check(debug=debug)
 
 class Employee(object):
     '''
@@ -256,7 +231,7 @@ class Employee(object):
     def key(self):
         return self.user_id.upper()
 
-    def check(self, eps=1e-9):
+    def check(self, eps=1e-9, debug=False):
         #debug = True
         debug = False
         if not abs(self.input_bingjia - self.kaoqin.bingjia) < eps:
@@ -517,11 +492,3 @@ class Employee(object):
     def get_yecan_allowance(self):
         return self.kaoqin.yeban_days * 12
 
-
-def test(fname,kaoqin_file, jixiao_file):
-    dl = DataLoader()
-    dl.load_file(fname, kaoqin_file, jixiao_file)
-    dl.check()
-
-if __name__ == '__main__':
-    test(sys.argv[1], sys.argv[2], sys.argv[3])
