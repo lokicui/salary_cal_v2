@@ -1,0 +1,65 @@
+seq	序号
+department	部门	部门名称
+name	姓名	职员姓名
+position	职位	职位名称
+id	员工编码	职员代码
+gangji	岗级	岗等
+jixiao	绩效	绩效评定结果
+bingjia_hour	病假小时数	病假
+shijia_hour	事假小时数	事假
+tanqinjia_hour	探亲假小时数	探亲假
+youxinjia_hour	年休假小时数	有薪假
+qitayouxinjia	其他有薪假
+yebantianshu	夜班天数	夜班个数
+chidaozaotui	迟到早退
+kuagong_hour	旷工小时	旷工
+other	其他	其它
+overtime_hour_15	加班小时(150%)
+overtime_hour_2	加班小时(200%)
+overtime_hour_3	加班小时(300%)
+shengchangongshi	生产工时
+beizhu	备注
+xindang	薪档
+shifagongzirenshu	实发工资人数
+jixiao_base	月绩效基数
+jixiao_factor	绩效系数	绩效评定系数
+jixiaodiaojie	绩效调节额
+gangweigongzi	岗位工资
+jixiaogongzi	绩效工资
+huiminbutie	回民补贴
+dushengzinvbutie	独生子女补贴
+yingyouerbutie	婴幼儿补贴
+gonglingbutie	工龄补贴
+banchangbutie	班长补贴
+huoshibutie	伙食补贴
+huoshibiaozhun	伙食标准
+yecanbiaozhun	夜餐标准
+yecanbutie	夜餐补助
+jishuibu	计税补
+jiaotongbutie	交通补助
+qitabutie	其他补贴
+qvnuanfeibutie	取暖费补贴
+pingshijiabanxiaoshi	平时加班小时
+gongxiurijiabanxiaoshi	公休日加班小时
+fadingjiarijiabanxiaoshi	法定假日加班小时
+jiabanfei	加班费
+tiaojiekuokuan	调节扣款
+queqintianshu	缺勤天数
+qitakuokuang	其它扣款
+zhufanggongjijingyuangong	住房公积金员工
+shiyebaoxianyuangong	失业保险员工
+yanglaobaoxianyuangong	养老保险员工
+yiliaobaoxianyuangong	医疗保险员工
+dae	大额
+chufenkuokuan	处分扣款
+zujin	租金
+yingfagongzi	应发工资
+mianshuiheji	免税合计
+mianshuijine	免税金额
+yueshouru	月收入
+kouchujishu	扣除基数
+yingnashuisuodee	应纳税所得额
+gerensuodeshui	个人所得税
+koukuanheji	扣款合计
+shifagongzi	实发工资
+bingshijiakuokuanheji	病事假扣款合计

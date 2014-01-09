@@ -1,0 +1,58 @@
+#序号	seq
+部门名称	department
+职员代码	id
+职员姓名	name
+职位名称	position
+#岗等
+薪档	xindang
+#实发工资人数
+月绩效基数	month_performance_base
+绩效评定结果	performance
+绩效评定系数	performance_ratio
+绩效调节额	performance_adjustment
+岗位工资	post_wage
+绩效工资	performance_wage
+回民补贴	huimin_allowance
+独生子女补贴	only_child_allowance
+婴幼儿补贴	child_allowance
+工龄补贴	service_allowance
+班长补贴	squard_allowance
+伙食补贴	huoshi_allowance
+夜餐标准	food_standards
+夜餐标准	supper_standard
+夜班个数	yeban_days
+夜餐补助	yecan_allowance
+计税补	jishui_allowance
+交通补助	traffic_allowance
+其他补贴	traffic_allowance
+取暖费补贴	qunuan_allowance
+平时加班小时	overtime_hour_15
+公休日加班小时	overtime_hour_2
+法定假日加班小时	overtime_hour_3
+加班费	overtime_wage
+病假小时数	bingjia_hour
+事假小时数	shijia_hour
+病事假扣款合计	bingshijia_debit
+探亲假小时数	tanqinjia_hour
+年休假小时数	nianxiujia_hour
+#其他有薪假
+旷工小时	kuangong_hour
+调节扣款	adjust_debit
+其它扣款	other_debit
+住房公积金员工	housing_fund_yuangong
+失业保险员工	shiye_yuangong
+养老保险员工	yanglao_yuangong
+医疗保险员工	yiliao_yuangong
+缺勤天数	absence_days
+大额	large
+处分扣款	punishment_debit
+租金	rent
+应发工资	wages_should
+免税合计	total_exemption
+#免税金额
+#月收入
+扣除基数	reduction_base
+应纳税所得额	tax_income
+个人所得税	tax
+扣款合计	total_deductions
+实发工资	income

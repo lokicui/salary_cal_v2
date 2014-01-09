@@ -5,17 +5,17 @@ import getopt
 import sys
 import pdb
 sys.path.append('../src')
-from salary import DataLoader
+from dataloader import DataLoader
 from log import log, DEBUG, INFO, WARN, ERROR, FATAL
 
 def usage():
     print 'Usage:'
-    print '\t%s -f final_fname -k kaoqin_fname -j jixiao_fname [-d]' % sys.argv[0]
+    print '\t%s -f final_fname -k kaoqin_dir -j jixiao_dir [-d]' % sys.argv[0]
 
 
-def run(final_file, kaoqin_file, jixiao_file, fenc='utf8'):
+def run(final_file, kaoqin_dir, jixiao_dir, fenc='utf8'):
     dl = DataLoader()
-    dl.load_file(final_file, kaoqin_file, jixiao_file, fenc)
+    dl.load(kaoqin_dir, jixiao_dir, final_file, fenc)
     dl.check()
 
 def main():
@@ -27,8 +27,8 @@ def main():
         usage()
         sys.exit(2)
     debug = False
-    kaoqin_fname = ''
-    jixiao_fname = ''
+    kaoqin_dir = ''
+    jixiao_dir = ''
     final_fname = ''
     for o, v in opts:
         if o in ("-d", '--debug'):
@@ -37,21 +37,21 @@ def main():
             usage()
             sys.exit()
         elif o in ("-k", '--kaoqin'):
-            kaoqin_fname = v.strip()
+            kaoqin_dir = v.strip()
         elif o in ("-j", "--jixiao"):
-            jixiao_fname = v.strip()
+            jixiao_dir = v.strip()
         elif o in ("-f", "--final"):
             final_fname = v.strip()
         else:
             assert False, "unhandled option"
     # ...
-    if not os.path.isfile(kaoqin_fname):
-        log(FATAL, 'kaoqin[%s] does not exists!' % kaoqin_fname)
-    if not os.path.isfile(jixiao_fname):
-        log(FATAL, 'jixiao[%s] does not exists!' % jixiao_fname)
+    if not os.path.isdir(kaoqin_dir):
+        log(FATAL, 'kaoqin[%s] does not exists!' % kaoqin_dir)
+    if not os.path.isdir(jixiao_dir):
+        log(FATAL, 'jixiao[%s] does not exists!' % jixiao_dir)
     if not os.path.isfile(final_fname):
         log(FATAL, 'final[%s] does not exists!' % final_fname)
-    run(final_fname, kaoqin_fname, jixiao_fname, fenc='utf8')
+    run(final_fname, kaoqin_dir, jixiao_dir, fenc='utf8')
 
 if __name__ == '__main__':
     main()

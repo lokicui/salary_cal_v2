@@ -11,6 +11,7 @@ dist
 build
 eggs
 parts
+bin/*.pyc
 var
 sdist
 develop-eggs
